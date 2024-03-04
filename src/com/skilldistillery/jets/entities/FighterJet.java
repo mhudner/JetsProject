@@ -10,14 +10,8 @@ public class FighterJet extends Jet implements Fighter {
 
 	public void dogFight() {
 		try (Scanner kb = new Scanner(System.in)) {
-			System.out.println("Target Aquired: would you like to engage? Y/N");
-			String userInput = kb.nextLine();
+			System.out.println(this.getModel() + "FIRE ZE MISSILES!");
 
-			if (userInput == "Y") {
-				System.out.println("FIRE ZE MISSILES!");
-			} else {
-				System.out.println("What a baby! You should be ashamed!");
-			}
 		}
 	}
 }

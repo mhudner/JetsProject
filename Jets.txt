@@ -1,5 +1,5 @@
 Fighter,Stealth Bomber,100,10,203001211
 Cargo,Boeing C-17 Globemaster,3000,244383,233738409
 Passenger,Boeing 787 Dreamliner,50000,9000,78595634
-Passenger,Embraer Phenom 300,50000,17615454
+Passenger,Embraer Phenom,300,50000,17615454
 Fighter,Bombadier,600,4521,10500

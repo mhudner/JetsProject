@@ -14,6 +14,7 @@ public class JetsApp {
 	}
 
 	public void run() {
+		airField.loadFleet("Jets.txt");
 		displayUserMenu();
 
 	}

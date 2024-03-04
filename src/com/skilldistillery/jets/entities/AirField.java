@@ -13,24 +13,29 @@ public class AirField {
 	public List<Jet> fleetList = new ArrayList<>();
 	public Scanner kb = new Scanner(System.in);
 
-	public void listJets() {
+	public void loadFleet(String filename) {
 		BufferedReader list = null;
 		try {
-			list = new BufferedReader(new FileReader("Jets.txt"));
+			list = new BufferedReader(new FileReader(filename));
 			String line;
 			while ((line = list.readLine()) != null) {
-				String[] jetAspects = line.split(", ");
+				String[] jetAspects = line.split(",");
+//				System.out.println(jetAspects[0] + " " + jetAspects[1] + " " + jetAspects[2] + " " + jetAspects[3] + " "
+//						+ jetAspects[4]); // helpful for debug purposes
 				if (jetAspects[0].equals("Fighter")) {
-					FighterJet fighter = new FighterJet(jetAspects[1], Double.parseDouble(jetAspects[2]),
+					Jet fighter = new FighterJet(jetAspects[1], Double.parseDouble(jetAspects[2]),
 							Integer.parseInt(jetAspects[3]), Long.parseLong(jetAspects[4]));
+					// System.out.println(fighter); // helpful for debug purposes
 					fleetList.add(fighter);
 				} else if (jetAspects[0].equals("Cargo")) {
-					CargoLiner cargo = new CargoLiner(jetAspects[1], Double.parseDouble(jetAspects[2]),
+					Jet cargo = new CargoLiner(jetAspects[1], Double.parseDouble(jetAspects[2]),
 							Integer.parseInt(jetAspects[3]), Long.parseLong(jetAspects[4]));
+					// System.out.println(cargo); // helpful for debug purposes
 					fleetList.add(cargo);
 				} else if (jetAspects[0].equals("Passenger")) {
-					PassengerPlane passenger = new PassengerPlane(jetAspects[1], Double.parseDouble(jetAspects[2]),
+					Jet passenger = new PassengerPlane(jetAspects[1], Double.parseDouble(jetAspects[2]),
 							Integer.parseInt(jetAspects[3]), Long.parseLong(jetAspects[4]));
+					// System.out.println(passenger); // helpful for debug purposes
 					fleetList.add(passenger);
 				}
 			}
@@ -46,6 +51,14 @@ public class AirField {
 					e.printStackTrace();
 				}
 			}
+		}
+
+	}
+
+	public void listJets() {
+		System.out.println("Flying all jets...");
+		for (Jet jet : fleetList) {
+			System.out.println(jet);
 		}
 
 	}
@@ -88,7 +101,7 @@ public class AirField {
 			}
 		}
 		if (longestR != null) {
-			System.out.println("The fastest Jet in your fleet is: ");
+			System.out.println("The longest range Jet in your fleet is: ");
 			System.out.println("Model: " + longestR.getModel());
 			System.out.println("Speed: " + longestR.getSpeed());
 			System.out.println("Range: " + longestR.getRange());
@@ -132,15 +145,15 @@ public class AirField {
 					+ "Max range: " + range + "Purchase Price: " + price);
 
 			if (jetChoice.equals("Cargo")) {
-				CargoLiner cargo = new CargoLiner(model, speed, range, price);
+				Jet cargo = new CargoLiner(model, speed, range, price);
 				fleetList.add(cargo);
 			}
 			if (jetChoice.equals("Fighter")) {
-				FighterJet fighter = new FighterJet(model, speed, range, price);
+				Jet fighter = new FighterJet(model, speed, range, price);
 				fleetList.add(fighter);
 			}
 			if (jetChoice.equals("Passenger")) {
-				PassengerPlane passenger = new PassengerPlane(model, speed, range, price);
+				Jet passenger = new PassengerPlane(model, speed, range, price);
 				fleetList.add(passenger);
 			}
 
